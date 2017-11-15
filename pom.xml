@@ -21,6 +21,12 @@
       <version>3.7.1</version>
     </dependency>
     <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.deque</groupId>
       <artifactId>axe-selenium</artifactId>
       <version>2.0</version>
@@ -66,6 +72,12 @@
       <groupId>org.apache.tika</groupId>
       <artifactId>tika-core</artifactId>
       <version>1.4</version>
+    </dependency>
+    <!-- Runtime -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.3.2</version>
     </dependency>
 
     <!-- Functional Test -->
