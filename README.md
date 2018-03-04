@@ -7,7 +7,7 @@ There are three methods available in <i>ProcessResponse</i> class for page scann
 2. aXescannerWithRules() - This method scans the a11y violations with the given rules by using aXe-core
 3. googleChromeScanner() - This method scans the page by using GoogleChrome accessibility-developer-tools
  
-[GoogleChrome accessibility-developer-tools][2] returns a meaningful Java object which is used for reporting later. where as [aXe-core][1] returns violation in form of json. This response is parsed for reporting purpose. After scanning  is done, the tool creates a folder called "Accessibility Results" and inside that folder, it creates a Time stamped PDF file with all the violations listed. So, each time when you call this method, it generates the PDF with the violations at that point of time.
+[GoogleChrome accessibility-developer-tools][2] returns a meaningful Java object which is used for reporting later. Where as [aXe-core][1] returns violation in form of json. This response is parsed for reporting purpose. After scanning  is done, the tool creates a folder called "Accessibility Results" and inside that folder, it creates a Time stamped PDF file with all the violations listed. So, each time when you call this method, it generates a PDF with the violations at that point of time.
 
 ## Better Practices ##
 
