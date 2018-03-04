@@ -1,8 +1,13 @@
-# aXe-chrome-accessibility #
+# aXe-chrome-accessibility README #
 
 aXe-chrome-accessibility is used for automating the accessibility audit of your web site with the help of selenium and Java. This repo is built with two popular accessibility scanners [GoogleChrome accessibility-developer-tools][2] and [aXe-core][1]. 
 
-As discussed above, once you call the method "ProcessResponse.scanner(driver);" (you have to pass your driver object as parameter to this method), it first scans the website using  [GoogleChrome accessibility-developer-tools][2] to run the audit. Once the audit is run, the tool returns a meaningful Java object which is used for reporting later. And then it uses [aXe-core][1] for scanning the website. This [aXe-core][1] returns violation in form of json response. This response is parsed for reporting purpose. After scanning with both the tools is done, it creates a folder called "Accessibility Results" and inside that folder, it creates a Time stamped PDF file with all the violations listed. So, each time when you call this method, it generates the PDF with the violations at that point of time.
+There are three methods available in <i>ProcessResponse</i> class for page scanning. 
+1. aXescanner() - This method just scans without any rules by using aXe-core
+2. aXescannerWithRules() - This method scans the a11y violations with the given rules by using aXe-core
+3. googleChromeScanner() - This method scans the page by using GoogleChrome accessibility-developer-tools
+ 
+[GoogleChrome accessibility-developer-tools][2] returns a meaningful Java object which is used for reporting later. where as [aXe-core][1] returns violation in form of json. This response is parsed for reporting purpose. After scanning  is done, the tool creates a folder called "Accessibility Results" and inside that folder, it creates a Time stamped PDF file with all the violations listed. So, each time when you call this method, it generates the PDF with the violations at that point of time.
 
 ## Better Practices ##
 
@@ -18,7 +23,7 @@ Once the library is available in your local/internal maven repository, please ad
 <dependency>
    <groupId>com.accessibility</groupId>
    <artifactId>aXe-chrome-accessibility</artifactId>
-   <version>1.0.0-SNAPSHOT</version>
+   <version>1.1.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -39,8 +44,6 @@ Fork the project and submit pull request if you like to add a feature/fix bugs e
 ## Disclaimer ##
 
 I am not a accessibility expert. I am open for suggestions.
-
-This is the basic version. I will work on to improve this repo.
 
 ## Known Issues ##
 As we create PDF file for every call, we have to call this method, if there is any dynamic content in the page. In that case, tool may report duplicate issues in each report. I am working on resolving this issue.

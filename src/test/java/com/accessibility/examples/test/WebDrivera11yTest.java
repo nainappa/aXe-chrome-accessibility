@@ -16,17 +16,29 @@ import com.itextpdf.text.DocumentException;
 public class WebDrivera11yTest {
 
   @Test
-  public void simpleWebDriverAccessibilityTest()
+  public void simpleWebDriverAXEAccessibilityTest()
       throws IOException, InterruptedException, DocumentException {
-    System.setProperty("webdriver.chrome.driver", "C://MyProjects//chromedriver.exe");
+    String strOptions="";
+    System.setProperty("webdriver.chrome.driver",
+        "<Your driver path>");
     WebDriver driver = new ChromeDriver();
-    driver.get("https://www.stubhub.com/");
+    driver.get("https://www.starbucks.com/");
     driver.manage().window().maximize();
     Thread.sleep(3000);
-    ProcessResponse.scanner(driver);
-    driver.findElement(By.xpath("//a[text()='Sell tickets']/parent::h3")).click();
-    Thread.sleep(9000);
-    ProcessResponse.scanner(driver);
+    ProcessResponse.aXescanner(driver);
+    driver.quit();
+  }
+  
+  @Test
+  public void simpleWebDriverAccessibilityGoogleChromeTest()
+      throws IOException, InterruptedException, DocumentException {
+    System.setProperty("webdriver.chrome.driver",
+        "<Your driver path>");
+    WebDriver driver = new ChromeDriver();
+    driver.get("https://www.starbucks.com/");
+    driver.manage().window().maximize();
+    Thread.sleep(3000);
+    ProcessResponse.googleChromeScanner(driver);
     driver.quit();
   }
 }

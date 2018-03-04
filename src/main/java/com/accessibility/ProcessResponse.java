@@ -17,7 +17,19 @@ public class ProcessResponse {
   private static final URL scriptUrl = ProcessResponse.class.getResource("/axe.min.js");
   private static final String lineSeparator = System.getProperty("line.separator");
   
-  public static void scanner(WebDriver driver) throws IOException, DocumentException, InterruptedException{
+  public static void aXescanner(WebDriver driver) throws IOException, DocumentException, InterruptedException{
+    JSONObject responseJSON;
+    responseJSON = new AXE.Builder(driver, scriptUrl).analyze();
+    PDFReport.createPDF(AXEResponseParser.responseParser(responseJSON));
+  }
+  
+  public static void aXescannerWithRules(WebDriver driver, String strOptions) throws IOException, DocumentException, InterruptedException{
+    JSONObject responseJSON;
+    responseJSON = new AXE.Builder(driver, scriptUrl).options(strOptions).analyze();
+    PDFReport.createPDF(AXEResponseParser.responseParser(responseJSON));
+  }
+  
+  public static void googleChromeScanner(WebDriver driver) throws IOException, DocumentException, InterruptedException{
     final StringBuilder sb = new StringBuilder();
     sb.append(lineSeparator);
     AccessibilityScanner scanner = new AccessibilityScanner(driver);
@@ -28,8 +40,6 @@ public class ProcessResponse {
       sb.append(audit_report.get("plain_report").toString());
       sb.append(lineSeparator);
     }
-    JSONObject responseJSON = new AXE.Builder(driver, scriptUrl).analyze();
-    sb.append(AXEResponseParser.responseParser(responseJSON));
     PDFReport.createPDF(sb);
   }
 }

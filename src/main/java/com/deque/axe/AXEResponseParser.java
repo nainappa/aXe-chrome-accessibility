@@ -24,7 +24,7 @@ public class AXEResponseParser {
       sb.append(lineSeparator);
       failures = errors.getJSONObject(i);
       violations = failures.getJSONArray("nodes");
-      sb.append("===========================Other Violations================================")
+      sb.append("===========================Other Vi0olations================================")
           .append(lineSeparator).append("Violation is: -->" + failures.get("help"))
           .append(lineSeparator)
           .append("Description of the violation --> " + failures.get("description"))
@@ -32,7 +32,8 @@ public class AXEResponseParser {
           .append(lineSeparator);
       for (int j = 0; j < violations.length(); j++) {
         node = violations.getJSONObject(j);
-        sb.append("Elements violated are: ---> " + node.get("target")).append(lineSeparator);
+        sb.append("Elements violated are: ---> " + node.get("html")).append(lineSeparator);
+        sb.append("Target violated are: ---> " + node.get("target")).append(lineSeparator);
         impact = node.getJSONArray("any");
         // System.out.println(impact.get("impact").toString());
         // impact=node.getJSONObject("any");
