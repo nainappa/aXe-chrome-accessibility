@@ -1,6 +1,6 @@
 # aXe-chrome-accessibility README #
 
-aXe-chrome-accessibility is used for automating the accessibility audit of your web site with the help of selenium and Java. This repo is built with two popular accessibility scanners [GoogleChrome accessibility-developer-tools][2] and [aXe-core][1]. 
+aXe-chrome-accessibility is used for automating the accessibility audit of your web site with the help of selenium and Java. This repo is built with two popular accessibility scanners [aXe-core][1] and [GoogleChrome accessibility-developer-tools][2]. 
 
 There are three methods available in <i>ProcessResponse</i> class for page scanning. 
 1. aXescanner() - This method just scans without any rules by using aXe-core
