@@ -16,7 +16,7 @@ import com.itextpdf.text.DocumentException;
 public class WebDrivera11yTest {
 
   @Test
-  public void simpleWebDriverAXEAccessibilityTest()
+  public void simpleWebDriveraXeAccessibilityTest()
       throws IOException, InterruptedException, DocumentException {
     String strOptions="";
     System.setProperty("webdriver.chrome.driver",
@@ -39,6 +39,20 @@ public class WebDrivera11yTest {
     driver.manage().window().maximize();
     Thread.sleep(3000);
     ProcessResponse.googleChromeScanner(driver);
+    driver.quit();
+  }
+  
+  @Test
+  public void simpleWebDriveraXeAccessibilityTestwithRules()
+      throws IOException, InterruptedException, DocumentException {
+    System.setProperty("webdriver.chrome.driver",
+        "<Your driver path>");
+    WebDriver driver = new ChromeDriver();
+    driver.get("https://www.starbucks.com/");
+    driver.manage().window().maximize();
+    Thread.sleep(3000);
+    String ruleset = "";
+    ProcessResponse.aXescannerWithRules(driver,ruleset);
     driver.quit();
   }
 }
