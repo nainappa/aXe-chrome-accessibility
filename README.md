@@ -1,4 +1,4 @@
-# aXe-chrome-accessibility README #
+# aXe-chrome-accessibility #
 
 aXe-chrome-accessibility is used for automating the accessibility audit of your web site with the help of selenium and Java. This repo is built with two popular accessibility scanners [aXe-core][1] and [GoogleChrome accessibility-developer-tools][2]. 
 
