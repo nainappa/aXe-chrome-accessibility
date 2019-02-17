@@ -4,7 +4,7 @@ aXe-chrome-accessibility is used for automating the accessibility audit of your 
 
 There are three methods available in <i>ProcessResponse</i> class for page scanning. 
 1. aXescanner() - This method just scans without any rules by using aXe-core
-2. aXescannerWithRules() - This method scans the a11y violations with the given rules by using aXe-core
+2. aXescannerWithRules() - This method scans the a11y violations with the given rules by using aXe-core. To know more about these aXe                              rules click [here][3]
 3. googleChromeScanner() - This method scans the page by using GoogleChrome accessibility-developer-tools
  
 [GoogleChrome accessibility-developer-tools][2] returns a meaningful Java object which is used for reporting later. Where as [aXe-core][1] returns violation in form of json. This response is parsed for reporting purpose. After scanning  is done, the tool creates a folder called "Accessibility Results" and inside that folder, it creates a Time stamped PDF file with all the violations listed. So, each time when you call this method, it generates a PDF with the violations at that point of time.
@@ -57,4 +57,4 @@ Blog Link: https://seleniumocean.blogspot.com/
 
 [1]: https://github.com/dequelabs/axe-core/tree/master "aXe-core"
 [2]: https://github.com/GoogleChrome/accessibility-developer-tools "GoogleChrome accessibility-developer-tools"
-
+[3]: https://dequeuniversity.com/rules/axe/3.1
