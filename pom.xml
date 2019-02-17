@@ -71,7 +71,7 @@
     <dependency>
       <groupId>org.apache.tika</groupId>
       <artifactId>tika-core</artifactId>
-      <version>1.4</version>
+      <version>1.19.1</version>
     </dependency>
     <!-- Runtime -->
     <dependency>
