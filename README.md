@@ -3,15 +3,15 @@
 aXe-chrome-accessibility is used for automating the accessibility audit of your web site with the help of selenium and Java. This repo is built with two popular accessibility scanners [aXe-core][1] and [GoogleChrome accessibility-developer-tools][2]. 
 
 There are three methods available in <i>ProcessResponse</i> class for page scanning. 
-1. aXescanner() - This method just scans without any rules by using aXe-core
-2. aXescannerWithRules() - This method scans the a11y violations with the given rules by using aXe-core. To know more about these aXe                              rules click [here][3]
-3. googleChromeScanner() - This method scans the page by using GoogleChrome accessibility-developer-tools
+1. aXescanner() - This method just scans without any rules by using aXe-core and returns the response as string
+2. aXescannerWithRules() - This method scans the a11y violations with the given rules by using aXe-core and returns the response as                                string. To know more about these aXe rules click [here][3]
+3. googleChromeScanner() - This method scans the page by using GoogleChrome accessibility-developer-tools and returns the response as                              string.
  
-[GoogleChrome accessibility-developer-tools][2] returns a meaningful Java object which is used for reporting later. Where as [aXe-core][1] returns violation in form of json. This response is parsed for reporting purpose. After scanning  is done, the tool creates a folder called "Accessibility Results" and inside that folder, it creates a Time stamped PDF file with all the violations listed. So, each time when you call this method, it generates a PDF with the violations at that point of time.
+Once you call these methods, the tool also creates a Time stamped PDF file with all the violations listed under "Accessibility Results" folder. So, each time when you call this method, it generates a PDF with the violations.
 
-## Better Practices ##
+## Better Practice ##
 
-As we generate PDF report every time when you call the method, it is effective, if you navigate to each page and call this method.
+If you are looking for just meaningful PDF report, then call these methods once per page.
 
 ## To use the aXe-chrome-accessibility library in your own tests ##
 
@@ -27,7 +27,7 @@ Once the library is available in your local/internal maven repository, please ad
 </dependency>
 ```
 
-In this project, you can find one example testcase of how to use this library using TestNG and Selenium under `src/test/java/com/accessibility/examples/test/WebDrivera11yTest.java`. Test is written to run in chrome browser. Before running the tests, make sure you have driver.exe file downloaded and add the corresponding path to `System.setProperty("webdriver.chrome.driver", "<you chromedriver.exe file path here>");` .  
+In this project, you can find one example testcase of how to use this library using TestNG and Selenium under `src/test/java/com/accessibility/examples/test/WebDrivera11yTest.java`. Test is written to run in chrome browser. Since WebDriverManager dependency is added, you don't have to include driver .exe files for running.  
 
 ## Reference ##
 
@@ -46,7 +46,8 @@ Fork the project and submit pull request if you like to add a feature/fix bugs e
 I am not a accessibility expert. I am open for suggestions.
 
 ## Known Issues ##
-As we create PDF file for every call, we have to call this method, if there is any dynamic content in the page. In that case, tool may report duplicate issues in each report. I am working on resolving this issue.
+1. Working on creating a maven dependency of this project.
+2. Need to solve the duplicate violations on the same page. 
 
 ## Contact ##
 
