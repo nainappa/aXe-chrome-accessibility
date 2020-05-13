@@ -10,49 +10,49 @@ import org.testng.annotations.Test;
 import com.accessibility.ProcessResponse;
 import com.itextpdf.text.DocumentException;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 /**
  * Created by nilli on 8/17/17.
  */
 public class WebDrivera11yTest {
 
+  public String response;
   @Test
   public void simpleWebDriveraXeAccessibilityTest()
       throws IOException, InterruptedException, DocumentException {
-    String strOptions="";
-    System.setProperty("webdriver.chrome.driver",
-        "<Your driver path>");
+    WebDriverManager.chromedriver().setup();
     WebDriver driver = new ChromeDriver();
     driver.get("https://www.starbucks.com/");
     driver.manage().window().maximize();
     Thread.sleep(3000);
-    ProcessResponse.aXescanner(driver);
+    String response = ProcessResponse.aXescanner(driver);
     driver.quit();
   }
   
   @Test
   public void simpleWebDriverAccessibilityGoogleChromeTest()
       throws IOException, InterruptedException, DocumentException {
-    System.setProperty("webdriver.chrome.driver",
-        "<Your driver path>");
+    WebDriverManager.chromedriver().setup();
     WebDriver driver = new ChromeDriver();
     driver.get("https://www.starbucks.com/");
     driver.manage().window().maximize();
     Thread.sleep(3000);
-    ProcessResponse.googleChromeScanner(driver);
+    String response = ProcessResponse.googleChromeScanner(driver);
     driver.quit();
   }
   
+  //This test is for verifying the axe-core scanning with 
   @Test
   public void simpleWebDriveraXeAccessibilityTestwithRules()
       throws IOException, InterruptedException, DocumentException {
-    System.setProperty("webdriver.chrome.driver",
-        "<Your driver path>");
+    WebDriverManager.chromedriver().setup();
     WebDriver driver = new ChromeDriver();
     driver.get("https://www.starbucks.com/");
     driver.manage().window().maximize();
     Thread.sleep(3000);
-    String ruleset = "";
-    ProcessResponse.aXescannerWithRules(driver,ruleset);
+    String ruleset = "{ rules: { 'accesskeys': { enabled: false } } }";
+    String response = ProcessResponse.aXescannerWithRules(driver,ruleset);
     driver.quit();
   }
 }

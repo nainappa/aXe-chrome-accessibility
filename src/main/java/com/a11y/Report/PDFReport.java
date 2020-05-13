@@ -29,7 +29,7 @@ public class PDFReport {
   public static String strWebPagePath;
   
   
-  public static void createPDF(StringBuilder sb) throws DocumentException, InterruptedException, IOException{
+  public static void createPDF(String sb) throws DocumentException, InterruptedException, IOException{
     File file;
     FileOutputStream pdfFileout;
     Document doc = new Document(PageSize.A4, 36, 36, 50, 40);
@@ -52,20 +52,11 @@ public class PDFReport {
     writer.setPageEvent(event);
     doc.open();
     Thread.sleep(5000);
-    Chunk redText = new Chunk(sb.toString(), red);
+    Chunk redText = new Chunk(sb, red);
     Paragraph para = new Paragraph();
     para.add(redText);
     doc.add(para);
-    /*if (audit_report.containsKey("screenshot")) {
-        TakesScreenshot scrShot = ((TakesScreenshot) driver);
-        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-        // Move image file to new destination
-        File DestFile = new File(path + "Accessibility Results" + "/"
-                + "Accessibility Results" + "-screenshot-report.png");
-        // Copy file at destination
-        FileUtils.copyFile(SrcFile, DestFile);
-    }*/
-
+    
     // close pdf file
     doc.close();
     pdfFileout.close();

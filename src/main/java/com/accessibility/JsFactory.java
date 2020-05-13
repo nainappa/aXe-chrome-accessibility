@@ -2,7 +2,6 @@ package com.accessibility;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 
 
@@ -12,7 +11,6 @@ class JsFactory {
 
     private static JsFactory INSTANCE = null;
     private String accessibility_content = null;
-    private Logger log = Logger.getLogger(JsFactory.class);
 
     private String jquery_content = null;
 
@@ -20,7 +18,7 @@ class JsFactory {
         try {
             this.applicationProperties = new ApplicationProperties("application.properties");
         } catch (IOException e) {
-            log.warn(e);
+            System.out.println(e);
         }
     }
 

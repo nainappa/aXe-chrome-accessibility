@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,7 +17,6 @@ public class AccessibilityScanner {
 
 	private WebDriver driver;
 	private JavascriptExecutor js;
-	private Logger log = Logger.getLogger(AccessibilityScanner.class);
 	private JsFactory jsFactory;
 
 	public AccessibilityScanner(WebDriver driver) throws IOException {
@@ -38,12 +36,10 @@ public class AccessibilityScanner {
 				+ "var report = axs.Audit.createReport(results);return report";
 		String report = (String) js.executeScript(accessibility_tests);
 
-		log.info(report);
-
 		try {
-			log.info(js.executeScript("$.active;"));
+			System.out.println(js.executeScript("$.active;"));
 		} catch (WebDriverException e) {
-			log.info("++++++++Injecting jQuery+++++++++++++");
+		    System.out.println("++++++++Injecting jQuery+++++++++++++");
 			js.executeScript(jsFactory.getJquery_content());
 		}
 
